@@ -1,0 +1,44 @@
+<div class="app-container">
+  {{#if error}}
+  <div class="alert alert-danger">
+    <strong>Sorry!</strong> No user has been found with that ID.
+  </div>
+  {{/if}}
+  <h1 class="greeting">Welcome Volunteer!</h1>
+  <form class="login-form">
+    <div class="input-group">
+      <input type="text" name="userId" placeholder="User ID" id="userId" value="{{id}}"
+      style="height: 75px; width:inherit; border-radius: 10px; border-style: groove; font-size: 25px; text-align: center;"></input>
+    </div>
+    <div class="row">
+      <button class="btn btn-success btn-lg clock" id="in">Clock In</button>
+      <button class="btn btn-danger btn-lg clock" id="out">Clock Out</button>
+      <button class="btn btn-info btn-lg clock" id="view">View Profile</button>
+    </div>
+  </form>
+  <a href="/admin">Admin Login</a>
+  <a href="/findId">Forgot your User ID?</a>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $("#in").on('click', function(event) {
+    event.preventDefault();
+    var id = $("#userId").val();
+    window.location.href = "/clockIn?userId=" + id;
+  });
+
+  $("#out").on('click', function(event) {
+    event.preventDefault();
+    var id = $("#userId").val();
+    window.location.href = "/clockOut?userId=" + id;
+  });
+
+  $("#view").on('click', function(event) {
+    event.preventDefault();
+    var id = $("#userId").val();
+    window.location.href = "/viewProfile?userId=" + id;
+  })
+});
+</script>

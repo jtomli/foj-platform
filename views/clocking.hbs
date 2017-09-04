@@ -1,0 +1,30 @@
+<div class="app-container">
+  <h1 class="greeting">Welcome, {{name}}!</h1>
+  <a href="/">Not you? Go back</a>
+  <h2>Time of Clock {{clock}}</h2>
+  <span id="date"></span>
+  <span id="time"></span>
+  <form action="/confirm?clock={{clock}}" method="POST">
+    {{#if in}}
+    <select name="role" style="width: 300px; margin: 30px;">
+      <option value="default">--Select a role--</option>
+      {{#each roles}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+    {{/if}}
+    <button class="btn btn-primary btn-lg" type="submit" name="confirm">Confirm Clock {{clock}}</button>
+  </form>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  var date = new Date();
+  $("#date").text(date.toDateString());
+  $("#time").text(date.toLocaleTimeString());
+  setInterval(function() {
+    date = new Date();
+    $("#time").text(date.toLocaleTimeString());
+  }, 1000)
+})
+</script>

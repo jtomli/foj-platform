@@ -1,0 +1,29 @@
+<div class="profile-container">
+  <h1>{{volunteer.fname}} {{volunteer.lname}}</h1>
+  <p id="userId">{{id}}</p>
+  <h2>Address Info</h2>
+  <p><strong>Address: </strong>{{volunteer.address}}</p>
+  <p><strong>City: </strong>{{volunteer.city}}</p>
+  <p><strong>State: </strong>{{volunteer.state}}</p>
+  <p><strong>Zip Code: </strong>{{volunteer.zip}}</p>
+  <h2>Contact Info</h2>
+  <p><strong>Phone Number: </strong>{{volunteer.phone}}</p>
+  <p><strong>Email: </strong>{{volunteer.email}}</p>
+  <h2>Personal Info</h2>
+  <p><strong>DOB: </strong>{{volunteer.dob}}</p>
+  <p><strong>Availability: </strong></p>
+  <p><strong>Languages: </strong>{{volunteer.languages}}</p>
+  <button class="btn btn-primary btn-lg" type="button" id="edit" style="
+    width: 200px;
+    margin-top: 50px;
+">Edit Profile</button>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#edit").on('click', function(event) {
+      event.preventDefault();
+      var id = $("#userId").text();
+      window.location.href = "/editProfile?userId=" + id;
+    });
+  });
+</script>

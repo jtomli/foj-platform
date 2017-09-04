@@ -1,0 +1,69 @@
+<h1>Edit Profile</h1>
+<form class="form-inline" action="/editProfile" method="POST">
+  <h3>Personal Info</h3>
+  <div class="form-group">
+    <label for="fname">First Name</label>
+    <input class="form-control" type="text" name="fname" value="{{volunteer.fname}}">
+  </div>
+  <div class="form-group">
+    <label for="fname">Last Name</label>
+    <input class="form-control" type="text" name="lname" value="{{volunteer.lname}}">
+  </div>
+  <div class="form-group">
+    <label for="fname">Date of Birth</label>
+    <input class="form-control" type="text" name="dob" value="{{volunteer.dob}}">
+  </div>
+  <label>Languages</label>
+  <div class="form-group">
+    {{#each volunteer.languages}}
+    <p class="form-control-static" name="{{language}}">{{language}}</p>
+    {{#if fluent}}
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" name="languages" type="checkbox" value="{{language}}-fluent" checked required>
+        Fluent
+      </label>
+    </div>
+    {{else}}
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" name="languages" type="checkbox" value="{{language}}-fluent" required>
+        Fluent
+      </label>
+    </div>
+    {{/if}}
+
+    {{#if read}}
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" name="languages" type="checkbox" value="{{language}}-read" checked>
+        Able to Read
+      </label>
+    </div>
+    {{else}}
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" name="languages" type="checkbox" value="{{language}}-read">
+        Able to Read
+      </label>
+    </div>
+    {{/if}}
+
+    {{/each}}
+  </div>
+  <button class="btn btn-primary btn-lg" type="submit">Save Changes</button>
+</form>
+
+
+<!-- <h2>Address Info</h2>
+<p><strong>Address: </strong>{{volunteer.address}}</p>
+<p><strong>City: </strong>{{volunteer.city}}</p>
+<p><strong>State: </strong>{{volunteer.state}}</p>
+<p><strong>Zip Code: </strong>{{volunteer.zip}}</p>
+<h2>Contact Info</h2>
+<p><strong>Phone Number: </strong>{{volunteer.phone}}</p>
+<p><strong>Email: </strong>{{volunteer.email}}</p>
+<h2>Personal Info</h2>
+<p><strong>DOB: </strong>{{volunteer.dob}}</p>
+<p><strong>Availability: </strong></p>
+<p><strong>Languages: </strong>{{volunteer.languages}}</p> -->
